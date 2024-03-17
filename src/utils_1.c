@@ -36,7 +36,6 @@ void	push_to_end(t_List *List, char *s)
 t_List   *input_to_list(char **argv)
 {
 	t_List		*final;
-	t_element	*tmp;
 	int			i;
 
 	if (!argv || !*argv)

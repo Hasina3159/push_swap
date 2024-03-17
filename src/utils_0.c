@@ -13,11 +13,11 @@ void    ft_putstr(char *s)
 	write(1, "\n", 1);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int	i;
-	int	r;
-	int	s;
+	int		i;
+	long	r;
+	int		s;
 
 	i = 0;
 	r = 0;

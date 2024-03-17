@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghost <ghost@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:19:51 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/15 16:05:13 by ntodisoa         ###   ########.fr       */
+/*   Updated: 2024/03/17 14:52:18 by ghost            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <limits.h>
 
 typedef struct	s_element
 {
@@ -28,7 +29,8 @@ typedef struct	s_List
 	t_element	*top;
 }				t_List;
 
-int			ft_atoi(const char *str);
+int 		error_check(char **s);
+long		ft_atoi(const char *str);
 int			ft_get_min(t_List *List);
 int			ft_lstsize(t_List *List);
 void		ft_lstsort(t_List *List_a, t_List *List_b);

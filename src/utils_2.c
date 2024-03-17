@@ -30,7 +30,7 @@ int ft_get_min(t_List *List)
 	min = tmp->value;
 	while (tmp)
 	{
-		if (tmp->value > min)
+		if (tmp->value < min)
 		{
 			min = tmp->value;
 			imin = i;
@@ -43,7 +43,6 @@ int ft_get_min(t_List *List)
 
 void	min_forward(t_List *List, int step, char stack)
 {
-	t_element	*tmp;
 	int			i;
 
 	i = 0;
@@ -59,7 +58,6 @@ void	min_forward(t_List *List, int step, char stack)
 
 void	min_backward(t_List *List, int step, char stack)
 {
-	t_element	*tmp;
 	int			i;
 
 	i = 0;
@@ -75,7 +73,6 @@ void	min_backward(t_List *List, int step, char stack)
 
 void	go_to_min(t_List *List, char stack)
 {
-	t_element	*tmp;
 	int			size;
 	int			min;
 	int			forward;
