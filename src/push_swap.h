@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ghost <ghost@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:19:51 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/18 16:19:49 by ntodisoa         ###   ########.fr       */
+/*   Updated: 2024/03/22 16:10:52 by ghost            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,31 @@
 typedef struct	s_element
 {
 	int					value;
+	int					chunk;
 	struct s_element	*next;
 }						t_element;
 
 typedef struct	s_List
 {
 	t_element	*top;
+	int			*sorted;
+	int			*pivots;
+	int			chunk_size;
 }				t_List;
+
+int ft_chunk_search(t_List *List, int chunk);
+int	nearest_chunk_target(t_List *List, int chunk);
+void	go_to_chunk_target(t_List *List_b, int	chunk);
+void    ft_lst_pre_sort(t_List *List_a, t_List *List_b);
+
+void	init_chunks_and_pivots(t_List *List);
+
+
+int *create_array(t_List *List);
+void	sort_array(int *array);
+void	show_array(int *array);
+int	*push_array(int *array, int n);
+int *get_all_pivot(int *array);
 
 
 int	get_b_bijection(long n_a, t_List *List_b);
@@ -35,10 +53,10 @@ int	get_a_bijection(long n_b, t_List *List_a);
 int	get_index(int n, t_List *List);
 int	get_cost(int n, t_List *List_1, t_List *List_2, char type);
 int	*get_min_cost(t_List *List1, t_List *List2, char type);
-void	move_all_necessary(t_List *List_a, t_List *List_b, char type);
+void	move_all_necessary(t_List *List_a, t_List *List_b);
 void	move_all_necessary_f(t_List *List_a, t_List *List_b);
 void	show_values(t_List *List);
-
+void	move_all(t_List *List_a, t_List *List_b, char type);
 void	ft_three_sort(t_List *List_a);
 
 int 		error_check(char **s);

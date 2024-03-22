@@ -3,18 +3,22 @@
 static void	r(t_List *List)
 {
 	int			value;
+	int			chunk;
 	t_element	*tmp;
 
 	if (!List || !List->top || !List->top->next)
 		return ;
 	tmp = List->top;
 	value = tmp->value;
+	chunk = tmp->chunk;
 	while (tmp->next)
 	{
 		tmp->value = tmp->next->value;
+		tmp->chunk = tmp->next->chunk;
 		tmp = tmp->next;
 	}
 	tmp->value = value;
+	tmp->chunk = chunk;
 }
 
 void    ra(t_List *List_a)

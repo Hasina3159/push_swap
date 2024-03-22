@@ -108,20 +108,13 @@ int	*get_min_cost(t_List *List1, t_List *List2, char type)
 }
 
 
-
-void	move_all_necessary(t_List *List_a, t_List *List_b, char type)
+void	move_all_necessary(t_List *List_a, t_List *List_b)
 {
 	int			*infos;
 
-	if (ft_lstsize(List_a) >= 5)
+	while (ft_lstsize(List_b) > 0)
 	{
-		pb(List_a, List_b);
-		pb(List_a, List_b);
-	}
-
-	while (ft_lstsize(List_a) > 0)
-	{
-		infos = get_min_cost(List_a, List_b, type);
+		infos = get_min_cost(List_b, List_a, 'a');
 		while (infos[1] > 0 && infos[2] > 0)
 		{
 			rr(List_a, List_b);
@@ -136,34 +129,70 @@ void	move_all_necessary(t_List *List_a, t_List *List_b, char type)
 		}
 		while (infos[1] > 0)
 		{
-			ra(List_a);
+			rb(List_b);
 			infos[1] = infos[1] - 1;
 		}
 		while (infos[2] > 0)
 		{
-			rb(List_b);
+			ra(List_a);
 			infos[2] = infos[2] - 1;
 		}
 		while (infos[1] < 0)
 		{
-			rra(List_a);
+			rrb(List_b);
 			infos[1] = infos[1] + 1;
 		}
 		while (infos[2] < 0)
 		{
-			rrb(List_b);
+			rra(List_a);
 			infos[2] = infos[2] + 1;
 		}
-		pb(List_a, List_b);
+		pa(List_b, List_a);
 	}
 }
 
-void	move_all_necessary_f(t_List *List_a, t_List *List_b)
+void	move_all(t_List *List_a, t_List *List_b, char type)
 {
-	while (ft_lstsize(List_b) > 0)
-		pa(List_b, List_a);
-}
+	int			*infos;
 
+	while (ft_lstsize(List_b))
+	{
+		infos = get_min_cost(List_b, List_a, type);
+		while (infos[1] > 0 && infos[2] > 0)
+		{
+			rr(List_a, List_b);
+			infos[1] = infos[1] - 1;
+			infos[2] = infos[2] - 1;
+		}
+		while (infos[1] < 0 && infos[2] < 0)
+		{
+			rrr(List_a, List_b);
+			infos[1] = infos[1] + 1;
+			infos[2] = infos[2] + 1;
+		}
+		while (infos[1] > 0)
+		{
+			rb(List_b);
+			infos[1] = infos[1] - 1;
+		}
+		while (infos[2] > 0)
+		{
+			ra(List_a);
+			infos[2] = infos[2] - 1;
+		}
+		while (infos[1] < 0)
+		{
+			rrb(List_b);
+			infos[1] = infos[1] + 1;
+		}
+		while (infos[2] < 0)
+		{
+			rra(List_a);
+			infos[2] = infos[2] + 1;
+		}
+		pa(List_b, List_a);
+	}
+}
 
 void	ft_three_sort(t_List *List_a)
 {

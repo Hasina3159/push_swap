@@ -14,12 +14,13 @@ static void	push(t_List *List_src, t_List *List_dst)
 
 void	pa(t_List *List_b, t_List *List_a)
 {
-	push(List_b, List_a);
 	ft_putstr("pa");
+	push(List_b, List_a);
 }
 
 void	pb(t_List *List_a, t_List *List_b)
 {
-	push(List_a, List_b);
 	ft_putstr("pb");
+	push(List_a, List_b);
 }
+ 

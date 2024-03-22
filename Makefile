@@ -1,10 +1,10 @@
 NAME = push_swap
 CC = cc
 FLAGS = -Wall -Wextra -Werror
-SRCS = src/push_swap.c src/s.c src/utils_1.c src/utils_3.c src/p.c src/r.c src/rr.c src/utils_0.c src/utils_2.c src/error_check.c src/utils_sort.c
+SRCS = src/push_swap.c src/s.c src/utils_1.c src/utils_3.c src/p.c src/r.c src/rr.c src/utils_0.c src/utils_2.c src/error_check.c src/utils_sort.c src/sort_to_tab.c src/update_0.c src/quick_sort.c
 
 $(NAME) : $(SRCS)
-	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
+	$(CC) $(FLAGS) $(SRCS) -o $(NAME) -g
 
 all : $(NAME)
 
