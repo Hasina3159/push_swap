@@ -65,6 +65,8 @@ int	get_cost(int n, t_List *List_1, t_List *List_2, char type)
 	int cost1;
 	int cost2;
 
+	if (is_three_last(List_1, n))
+		return (INT_MAX);
 	cost1 = get_index(n, List_1);
 	if (type == 'a')
 		cost2 = get_index(get_a_bijection(n, List_2), List_2);
@@ -107,18 +109,34 @@ int	*get_min_cost(t_List *List1, t_List *List2, char type)
 	return (final);
 }
 
+int	is_three_last(t_List *List, int n)
+{
+	int	*array;
+	int	size;
+
+	array = List->array;
+	size = List->size;
+	if (n == array[size] || n == array[size - 1] || n == array[size - 2])
+		return (1);
+	return (0);
+}
+
 
 void	move_all_necessary(t_List *List_a, t_List *List_b, char type)
 {
 	int			*infos;
+	t_element	*tmp;
 
-	if (ft_lstsize(List_a) > 4)
+	while (ft_lstsize(List_a) > 3 && ft_lstsize(List_a) > List_a->size - 2)
 	{
-		pb(List_a, List_b);
-		pb(List_a, List_b);
+		tmp = List_a->top;
+		if (is_three_last(List_a, tmp->value))
+			ra(List_a);
+		else
+			pb(List_a, List_b);
 	}
 
-	while (ft_lstsize(List_a) > 0)
+	while (ft_lstsize(List_a) > 3)
 	{
 		infos = get_min_cost(List_a, List_b, type);
 		while (infos[1] > 0 && infos[2] > 0)

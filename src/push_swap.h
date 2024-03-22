@@ -6,7 +6,7 @@
 /*   By: ghost <ghost@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:19:51 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/22 18:50:01 by ghost            ###   ########.fr       */
+/*   Updated: 2024/03/22 21:13:03 by ghost            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,14 @@ typedef struct	s_element
 typedef struct	s_List
 {
 	t_element	*top;
+	int			*array;
+	int			size;
 }				t_List;
+
+int *create_array(t_List *List);
+void	sort_array(int *array);
+int	is_three_last(t_List *List, int n);
+
 
 int	get_b_bijection(long n_a, t_List *List_b);
 int	get_a_bijection(long n_b, t_List *List_a);
