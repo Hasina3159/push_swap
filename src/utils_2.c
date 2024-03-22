@@ -23,7 +23,7 @@ int ft_get_min(t_List *List)
 	int         i;
 	int         min;
 
-	i = 0;
+	i = 0;		
 	tmp = List->top;
 	min = tmp->value;
 	while (tmp)

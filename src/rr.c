@@ -15,29 +15,25 @@ t_element	*get_last(t_List *List)
 static void	r(t_List *List)
 {
 	int			value;
-	int			chunk;
-	t_element	tmp_1v;
-	t_element	tmp_2v;
+	int			tmp_1v;
+	int			tmp_2v;
 	t_element	*tmp;
 
 	if (!List || !List->top || !List->top->next)
 		return ;
 	tmp = List->top;
 	value = get_last(List)->value;
-	chunk = get_last(List)->chunk;
-	tmp_1v = *tmp;
-	tmp_2v = *tmp->next;
+	tmp_1v = tmp->value;
+	tmp_2v = tmp->next->value;
 	while (tmp->next)
 	{
-		tmp->next->value = tmp_1v.value;
-		tmp->next->chunk = tmp_1v.chunk;
+		tmp->next->value = tmp_1v;
 		tmp_1v = tmp_2v;
 		tmp = tmp->next;
 		if (tmp->next)
-			tmp_2v = *tmp->next;
+			tmp_2v = tmp->next->value;
 	}
 	List->top->value = value;
-	List->top->chunk = chunk;
 }
 
 void    rra(t_List *List_a)
