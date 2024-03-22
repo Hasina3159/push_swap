@@ -75,6 +75,19 @@ int	get_cost(int n, t_List *List_1, t_List *List_2, char type)
 	return (ft_abs(cost2) + ft_abs(cost1));
 }
 
+int	get_cost_max(int n, t_List *List_1, t_List *List_2, char type)
+{
+	int cost1;
+	int cost2;
+
+	cost1 = get_index(n, List_1);
+	if (type == 'a')
+		cost2 = get_index(get_a_bijection(n, List_2), List_2);
+	else
+		cost2 = get_index(get_b_bijection(n, List_2), List_2);
+	return (ft_abs(cost2) + ft_abs(cost1));
+}
+
 int	*get_min_cost(t_List *List1, t_List *List2, char type)
 {
 	int			min_cost;
@@ -94,7 +107,11 @@ int	*get_min_cost(t_List *List1, t_List *List2, char type)
 	{
 		if (get_cost(tmp->value, List1, List2, type) < min_cost)
 		{
-			min_cost = get_cost(tmp->value, List1, List2, type);
+			if (ft_lstsize(List1) <= 100)
+				min_cost = get_cost(tmp->value, List1, List2, type);
+			else
+				min_cost = get_cost_max(tmp->value, List1, List2, type);
+
 			move_1 = get_index(tmp->value, List1);
 			if (type == 'a')
 				move_2 = get_index(get_a_bijection(tmp->value, List2), List2);
