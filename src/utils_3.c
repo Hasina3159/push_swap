@@ -7,9 +7,9 @@ int	ft_abs(int n)
 	return (n);
 }
 
-int ft_check_sorted(t_List *List)
+int	ft_check_sorted(t_List *List)
 {
-	t_element   *tmp;
+	t_element	*tmp;
 
 	tmp = List->top;
 	while (tmp->next)
@@ -21,7 +21,7 @@ int ft_check_sorted(t_List *List)
 	return (1);
 }
 
-void    ft_lstsort(t_List *List_a, t_List *List_b)
+void	ft_lstsort(t_List *List_a, t_List *List_b)
 {
 	if (!List_a || !List_a->top || !List_a->top->next)
 		return ;
@@ -34,4 +34,26 @@ void    ft_lstsort(t_List *List_a, t_List *List_b)
 	{
 		pa(List_b, List_a);
 	}
+}
+
+void	go_to_min(t_List *List, char stack)
+{
+	int	min;
+
+	min = get_index(ft_get_min(List), List);
+	if (min < 0)
+		min_backward(List, ft_abs(min), stack);
+	else if (min > 0)
+		min_forward(List, ft_abs(min), stack);
+}
+
+void	go_to_max(t_List *List, char stack)
+{
+	int	max;
+
+	max = get_index(ft_get_max(List), List);
+	if (max < 0)
+		min_backward(List, ft_abs(max), stack);
+	else if (max > 0)
+		min_forward(List, ft_abs(max), stack);
 }

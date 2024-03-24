@@ -1,15 +1,15 @@
 #include "push_swap.h"
 
-void    ft_putstr(char *s)
+void	ft_putstr(char *s)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-    {
-        write(1, &s[i], 1);
-        i++;
-    }
+	i = 0;
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
 	write(1, "\n", 1);
 }
 

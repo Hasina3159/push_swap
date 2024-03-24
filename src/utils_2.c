@@ -1,9 +1,9 @@
 #include "push_swap.h"
 
-int ft_lstsize(t_List *List)
+int	ft_lstsize(t_List *List)
 {
-	int         i;
-	t_element   *tmp;
+	int			i;
+	t_element	*tmp;
 
 	i = 0;
 	if (!List || !List->top)
@@ -17,13 +17,13 @@ int ft_lstsize(t_List *List)
 	return (i);
 }
 
-int ft_get_min(t_List *List)
+int	ft_get_min(t_List *List)
 {
-	t_element   *tmp;
-	int         i;
-	int         min;
+	t_element	*tmp;
+	int			i;
+	int			min;
 
-	i = 0;		
+	i = 0;
 	tmp = List->top;
 	min = tmp->value;
 	while (tmp)
@@ -36,11 +36,11 @@ int ft_get_min(t_List *List)
 	return (min);
 }
 
-int ft_get_max(t_List *List)
+int	ft_get_max(t_List *List)
 {
-	t_element   *tmp;
-	int         i;
-	int         max;
+	t_element	*tmp;
+	int			i;
+	int			max;
 
 	i = 0;
 	tmp = List->top;
@@ -83,15 +83,4 @@ void	min_backward(t_List *List, int step, char stack)
 			rrb(List);
 		i++;
 	}
-}
-
-void	go_to_min(t_List *List, char stack)
-{
-	int			min;
-
-	min = get_index(ft_get_max(List), List);
-	if (min < 0)
-		min_backward(List, ft_abs(min), stack);
-	else if (min > 0)
-		min_forward(List, ft_abs(min), stack);
 }

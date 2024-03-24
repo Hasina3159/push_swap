@@ -1,15 +1,19 @@
 #include "push_swap.h"
 
-
-void	show_values(t_List *List)
+int	is_sorted(t_List *List)
 {
 	t_element	*tmp;
 
 	if (!List || !List->top)
-		return ;
+		return (0);
 	tmp = List->top;
-	while (tmp)
+	while (tmp->next)
+	{
+		if (tmp->value > tmp->next->value)
+			return (0);
 		tmp = tmp->next;
+	}
+	return (1);
 }
 
 void	small_sort(t_List *List_a)
@@ -41,11 +45,23 @@ void	ft_lstfree(t_List *List)
 	free(tmp);
 }
 
+void	all_move(t_List *a, t_List *b)
+{
+	a->array = create_array(a);
+	sort_array(a->array);
+	b->top = NULL;
+	move_all_necessary(a, b);
+	go_to_max(b, 'b');
+	ft_three_sort(a);
+	finish_move(a, b);
+	free(a);
+	free(b);
+}
+
 int	main(int argc, char **argv)
 {
 	t_List		*a;
 	t_List		*b;
-	//int			x;
 
 	if (argc > 1)
 	{
@@ -56,25 +72,14 @@ int	main(int argc, char **argv)
 		}
 		b = (t_List *)malloc(sizeof(t_List));
 		a = input_to_list(argv);
-		if (!b || !a || !a->top || !a->top->next)
-			return (0);
-		//scanf("%d", &x);
+		if (!b || !a || !a->top || !a->top->next || is_sorted(a))
+			return (free(a), free(b), 0);
 		if (ft_lstsize(a) <= 3)
-		{
 			small_sort(a);
-			return (0);
-		}
-		a->array = create_array(a);
-		sort_array(a->array);
-		a->size = ft_lstsize(a);
-		b->top = NULL;
-		//printf("THREE ? : %d", is_three_last(a, x));
-		move_all_necessary(a, b, 'b');
-		go_to_min(b, 'b');
-		ft_three_sort(a);
-		finish_move(a, b);
-		free(a);
-		free(b);
+		else if (ft_lstsize(a) <= 100)
+			all_move(a, b);
+		else
+			all_move_500(a, b);
 	}
 	return (0);
 }

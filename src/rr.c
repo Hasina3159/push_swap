@@ -36,19 +36,19 @@ static void	r(t_List *List)
 	List->top->value = value;
 }
 
-void    rra(t_List *List_a)
+void	rra(t_List *List_a)
 {
 	ft_putstr("rra");
 	r(List_a);
 }
 
-void    rrb(t_List *List_b)
+void	rrb(t_List *List_b)
 {
 	ft_putstr("rrb");
 	r(List_b);
 }
 
-void    rrr(t_List *List_a, t_List *List_b)
+void	rrr(t_List *List_a, t_List *List_b)
 {
 	ft_putstr("rrr");
 	r(List_a);

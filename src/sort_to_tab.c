@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int *create_array(t_List *List)
+int	*create_array(t_List *List)
 {
 	int			size;
 	int			*array;
@@ -16,6 +16,7 @@ int *create_array(t_List *List)
 	i = 1;
 	tmp = List->top;
 	array[0] = size + 1;
+	List->size = size;
 	while (tmp)
 	{
 		array[i] = tmp->value;

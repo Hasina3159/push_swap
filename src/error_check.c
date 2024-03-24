@@ -1,16 +1,15 @@
 #include "push_swap.h"
 
-
 static int	ft_isdigit(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (*s == '-')
 		i++;
 	if (s[i] == 0)
 		return (0);
-	while(s[i])
+	while (s[i])
 	{
 		if (!(s[i] >= '0' && s[i] <= '9'))
 			return (0);
@@ -19,10 +18,10 @@ static int	ft_isdigit(char *s)
 	return (1);
 }
 
-int error_check(char **s)
+int	error_check(char **s)
 {
-	int     i;
-	int		j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (s[i])

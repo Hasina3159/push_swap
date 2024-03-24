@@ -23,4 +23,3 @@ void	pb(t_List *List_a, t_List *List_b)
 	ft_putstr("pb");
 	push(List_a, List_b);
 }
- 

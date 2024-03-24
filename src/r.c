@@ -17,19 +17,19 @@ static void	r(t_List *List)
 	tmp->value = value;
 }
 
-void    ra(t_List *List_a)
+void	ra(t_List *List_a)
 {
 	r(List_a);
 	ft_putstr("ra");
 }
 
-void    rb(t_List *List_b)
+void	rb(t_List *List_b)
 {
 	r(List_b);
 	ft_putstr("rb");
 }
 
-void    rr(t_List *List_a, t_List *List_b)
+void	rr(t_List *List_a, t_List *List_b)
 {
 	r(List_a);
 	r(List_b);
