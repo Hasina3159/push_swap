@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/25 09:20:33 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 15:26:24 by ntodisoa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	is_sorted(t_List *List)
@@ -45,41 +57,38 @@ void	ft_lstfree(t_List *List)
 	free(tmp);
 }
 
-void	all_move(t_List *a, t_List *b)
+void	ft_condition(t_List *a, t_List *b)
 {
-	a->array = create_array(a);
-	sort_array(a->array);
-	b->top = NULL;
-	move_all_necessary(a, b);
-	go_to_max(b, 'b');
-	ft_three_sort(a);
-	finish_move(a, b);
-	free(a);
-	free(b);
+	if (ft_lstsize(a) <= 3)
+		small_sort(a);
+	else if (ft_lstsize(a) <= 100)
+		all_move(a, b);
+	else
+		all_move_500(a, b);
 }
 
 int	main(int argc, char **argv)
 {
 	t_List		*a;
 	t_List		*b;
+	char		**av;
 
 	if (argc > 1)
 	{
-		if (!error_check(argv))
+		av = argv;
+		if (argc == 2)
+			av = ft_split(argv[1], ' ');
+		if (!error_check(av))
 		{
 			write(2, "Error\n", 6);
 			return (1);
 		}
 		b = (t_List *)malloc(sizeof(t_List));
-		a = input_to_list(argv);
+		a = input_to_list(av);
+		free_split(av);
 		if (!b || !a || !a->top || !a->top->next || is_sorted(a))
-			return (free(a), free(b), 0);
-		if (ft_lstsize(a) <= 3)
-			small_sort(a);
-		else if (ft_lstsize(a) <= 100)
-			all_move(a, b);
-		else
-			all_move_500(a, b);
+			return (free_all(a), free(b), 0);
+		ft_condition(a, b);
 	}
 	return (0);
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_sort_2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/25 09:21:23 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 15:26:30 by ntodisoa         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	ft_condition(int *infos, t_List *List_a, t_List *List_b)
@@ -33,6 +45,7 @@ static void	ft_condition_1(int *infos, t_List *List_a, t_List *List_b)
 		infos[2] = infos[2] + 1;
 	}
 	pb(List_a, List_b);
+	free(infos);
 }
 
 void	move_all_necessary(t_List *List_a, t_List *List_b)

@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 09:20:27 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:23 by ntodisoa         ###   ########.fr       */
+/*   Created: 2024/03/25 15:22:37 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 15:26:04 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_List *List_src, t_List *List_dst)
+void	free_list(t_element *top)
 {
-	t_element	*tmp;
+	if (top->next)
+		free_list(top->next);
+	if (top)
+		free(top);
+}
 
-	if (!List_src || !List_src->top)
+void	free_all(t_List *List)
+{
+	if (!List)
 		return ;
-	tmp = List_src->top;
-	List_src->top = tmp->next;
-	tmp->next = List_dst->top;
-	List_dst->top = tmp;
-}
-
-void	pa(t_List *List_b, t_List *List_a)
-{
-	ft_putstr("pa");
-	push(List_b, List_a);
-}
-
-void	pb(t_List *List_a, t_List *List_b)
-{
-	ft_putstr("pb");
-	push(List_a, List_b);
+	if (List->array)
+		free(List->array);
+	if (List->top)
+		free_list(List->top);
+	free(List);
 }

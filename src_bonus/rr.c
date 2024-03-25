@@ -1,49 +1,65 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   rr.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 09:20:53 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:26 by ntodisoa         ###   ########.fr       */
+/*   Created: 2024/03/25 09:20:56 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 14:19:57 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
+
+t_element	*get_last(t_List *List)
+{
+	t_element	*tmp;
+
+	if (!List || !List->top)
+		return (NULL);
+	tmp = List->top;
+	while (tmp->next)
+		tmp = tmp->next;
+	return (tmp);
+}
 
 static void	r(t_List *List)
 {
 	int			value;
+	int			tmp_1v;
+	int			tmp_2v;
 	t_element	*tmp;
 
 	if (!List || !List->top || !List->top->next)
 		return ;
 	tmp = List->top;
-	value = tmp->value;
+	value = get_last(List)->value;
+	tmp_1v = tmp->value;
+	tmp_2v = tmp->next->value;
 	while (tmp->next)
 	{
-		tmp->value = tmp->next->value;
+		tmp->next->value = tmp_1v;
+		tmp_1v = tmp_2v;
 		tmp = tmp->next;
+		if (tmp->next)
+			tmp_2v = tmp->next->value;
 	}
-	tmp->value = value;
+	List->top->value = value;
 }
 
-void	ra(t_List *List_a)
+void	rra(t_List *List_a)
 {
 	r(List_a);
-	ft_putstr("ra");
 }
 
-void	rb(t_List *List_b)
+void	rrb(t_List *List_b)
 {
 	r(List_b);
-	ft_putstr("rb");
 }
 
-void	rr(t_List *List_a, t_List *List_b)
+void	rrr(t_List *List_a, t_List *List_b)
 {
 	r(List_a);
 	r(List_b);
-	ft_putstr("rr");
 }

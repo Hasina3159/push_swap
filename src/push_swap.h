@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ghost <ghost@student.42.fr>                +#+  +:+       +#+        */
+/*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 09:19:51 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/24 16:02:32 by ghost            ###   ########.fr       */
+/*   Updated: 2024/03/25 15:26:25 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,15 @@ typedef struct s_List
 	int			size;
 }				t_List;
 
+void		free_split(char **av);
+void		*ft_calloc(size_t n, size_t size);
+char		**ft_split(char const *s, char c);
+void		free_list(t_element *top);
+void		free_all(t_List *List);
 int			is_low_med(t_List *List);
 void		to_b(t_List *a, t_List *b);
 void		all_move_500(t_List *a, t_List *b);
+void		all_move(t_List *a, t_List *b);
 void		min_forward(t_List *List, int step, char stack);
 void		min_backward(t_List *List, int step, char stack);
 void		move_all_necessary_500(t_List *List_a, t_List *List_b);

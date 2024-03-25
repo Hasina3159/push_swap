@@ -6,11 +6,11 @@
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 09:21:14 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:29 by ntodisoa         ###   ########.fr       */
+/*   Updated: 2024/03/25 11:07:39 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 t_element	*ft_lstnew(int value)
 {

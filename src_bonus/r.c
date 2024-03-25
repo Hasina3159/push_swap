@@ -6,11 +6,11 @@
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 09:20:53 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:26 by ntodisoa         ###   ########.fr       */
+/*   Updated: 2024/03/25 13:55:59 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static void	r(t_List *List)
 {
@@ -32,18 +32,15 @@ static void	r(t_List *List)
 void	ra(t_List *List_a)
 {
 	r(List_a);
-	ft_putstr("ra");
 }
 
 void	rb(t_List *List_b)
 {
 	r(List_b);
-	ft_putstr("rb");
 }
 
 void	rr(t_List *List_a, t_List *List_b)
 {
 	r(List_a);
 	r(List_b);
-	ft_putstr("rr");
 }

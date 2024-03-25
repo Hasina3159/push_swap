@@ -1,49 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   r.c                                                :+:      :+:    :+:   */
+/*   p.c                                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 09:20:53 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:26 by ntodisoa         ###   ########.fr       */
+/*   Created: 2024/03/25 09:20:27 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 13:55:49 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-static void	r(t_List *List)
+static void	push(t_List *List_src, t_List *List_dst)
 {
-	int			value;
 	t_element	*tmp;
 
-	if (!List || !List->top || !List->top->next)
+	if (!List_src || !List_src->top)
 		return ;
-	tmp = List->top;
-	value = tmp->value;
-	while (tmp->next)
-	{
-		tmp->value = tmp->next->value;
-		tmp = tmp->next;
-	}
-	tmp->value = value;
+	tmp = List_src->top;
+	List_src->top = tmp->next;
+	tmp->next = List_dst->top;
+	List_dst->top = tmp;
 }
 
-void	ra(t_List *List_a)
+void	pa(t_List *List_b, t_List *List_a)
 {
-	r(List_a);
-	ft_putstr("ra");
+	push(List_b, List_a);
 }
 
-void	rb(t_List *List_b)
+void	pb(t_List *List_a, t_List *List_b)
 {
-	r(List_b);
-	ft_putstr("rb");
-}
-
-void	rr(t_List *List_a, t_List *List_b)
-{
-	r(List_a);
-	r(List_b);
-	ft_putstr("rr");
+	push(List_a, List_b);
 }

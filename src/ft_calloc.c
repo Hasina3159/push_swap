@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   p.c                                                :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ntodisoa <ntodisoa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 09:20:27 by ntodisoa          #+#    #+#             */
-/*   Updated: 2024/03/25 15:26:23 by ntodisoa         ###   ########.fr       */
+/*   Created: 2024/02/21 11:42:10 by ntodisoa          #+#    #+#             */
+/*   Updated: 2024/03/25 15:26:16 by ntodisoa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	push(t_List *List_src, t_List *List_dst)
+void	*ft_calloc(size_t n, size_t size)
 {
-	t_element	*tmp;
+	size_t	i;
+	char	*mem;
+	size_t	len;
 
-	if (!List_src || !List_src->top)
-		return ;
-	tmp = List_src->top;
-	List_src->top = tmp->next;
-	tmp->next = List_dst->top;
-	List_dst->top = tmp;
-}
-
-void	pa(t_List *List_b, t_List *List_a)
-{
-	ft_putstr("pa");
-	push(List_b, List_a);
-}
-
-void	pb(t_List *List_a, t_List *List_b)
-{
-	ft_putstr("pb");
-	push(List_a, List_b);
+	len = n * size;
+	mem = (char *)malloc(len);
+	if (mem == NULL)
+		return (NULL);
+	i = 0;
+	while (i < len)
+	{
+		mem[i] = 0;
+		i++;
+	}
+	return ((void *)mem);
 }
