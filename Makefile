@@ -2,6 +2,7 @@ NAME = push_swap
 CC = cc
 FLAGS = -Wall -Wextra -Werror
 SRCS = src/push_swap.c src/s.c src/utils_1.c src/utils_3.c src/p.c src/r.c src/rr.c src/utils_0.c src/utils_2.c src/error_check.c src/utils_sort.c src/utils_sort_2.c src/utils_sort_3.c src/sort_to_tab.c src/push_swap_1.c
+SRCS_BONUS = srcs_bonus/
 
 $(NAME) : $(SRCS)
 	$(CC) $(FLAGS) $(SRCS) -o $(NAME)
